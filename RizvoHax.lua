@@ -173,7 +173,7 @@ game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, Tw
 end)
 
 
-local PlayerMain_Button = Section5:AddSlider("Walk-Speed", 1, 27, 15, {toggleable = true, default = false, flag = "CustomWS_Flag", fireontoggle = true, fireondrag = true, rounded = true}, function(val, bool)
+local PlayerMain_Button = Section5:AddSlider("Walk-Speed", 1, 23, 15, {toggleable = true, default = false, flag = "CustomWS_Flag", fireontoggle = true, fireondrag = true, rounded = true}, function(val, bool)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
 	game.Players.LocalPlayer.Character:GetAttributeChangedSignal("Crouching"):Connect(function()
 		if bool then
