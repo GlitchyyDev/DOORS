@@ -131,9 +131,9 @@ local Entities_Button4 = Section:AddButton("Entity Notifier", function()
 				Library:Notify({title = "Entity Notifier (ENTITY)", text = "Rush has spawned! Find a hiding spot."})
 			elseif child.Name == "AmbushMoving" and EntityNotifierActive then
 				Library:Notify({title = "Entity Notifier (ENTITY)", text = "Ambush has spawned! Find a hiding spot."})
-         elseif child.Name == "A60Moving" and EntityNotifierActive then
+         elseif child.Name == "A60" and EntityNotifierActive then
 				Library:Notify({title = "Entity Notifier (ENTITY)", text = "A-60 has spawned! Find a hiding spot."})
-         elseif child.Name == "A120Moving" and EntityNotifierActive then
+         elseif child.Name == "A120" and EntityNotifierActive then
 				Library:Notify({title = "Entity Notifier (ENTITY)", text = "A-120 has spawned! Find a hiding spot."})
 		elseif child.Name == "BackdoorRush" and EntityNotifierActive then
 				Library:Notify({title = "Entity Notifier (ENTITY)", text = "Blitz has spawned! Find a hiding spot."})
