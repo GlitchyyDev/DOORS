@@ -1,13 +1,18 @@
+--// hey rizvo make sure to edit these //-- ok rizvo --// wait why am i talking to myslef
+
+local RizvoHax_ThemeAccent = Color3.fromRGB(0, 255, 255)
+local RizvoHax_GuiToggleKey = Enum.KeyCode.K
+
 --// library
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/UI-Libraries/main/Vynixius/Source.lua"))()
 
 --// main code junk begins here
 local Window = Library:AddWindow({
-	title = {"RizvoHax", "[DOORS] - (V1)"},
+	title = {"RizvoHax", "[DOORS]"},
 	theme = {
-		Accent = Color3.fromRGB(110, 40, 189)
+		Accent = RizvoHax_ThemeAccent
 	},
-	key = Enum.KeyCode.K ,
+	key = RizvoHax_GuiToggleKey ,
 	default = true
 })
 
@@ -36,6 +41,9 @@ local Section3 = Tab1:AddSection("Player", {default = false})
 local Section4 = Tab2:AddSection("SUPER HARD MODE 2023", {default = false})
 local Section6 = Tab2:AddSection("Visual", {default = false})
 local Section7 = Tab3:AddSection("Game", {default = true})
+local RushMode_Section = Tab2:AddSection("RUSH MODE (NOT AVAILABLE YET)", {default = false})
+local Archives_Section = Tab2:AddSection("The Archives (NOT AVAILABLE YET)", {default = false})
+local Endless_Section = Tab2:AddSection("ENDLESS (NOT AVAILABLE YET)", {default = false})
 
 local Entities_Button1 = Section:AddButton("Kill A-90 (Disables A-90 permanently.)", function()
 	game.ReplicatedStorage.RemotesFolder.A90:Destroy()
@@ -95,21 +103,6 @@ local MainVisual_Button = Section6:AddButton("Fullbright", function()
 		game.Lighting.Ambient = Color3.fromRGB(67, 41, 0)
 	end
 end)
-
-local DoorEspGui_Folder = Instance.new("Folder", workspace)
-DoorEspGui_Folder.Name = "DoorESPStuff"
-
-function DoorEsp_CreateGui()
-	local BillboardGui = Instance.new("BillboardGui", DoorEspGui_Folder)
-	BillboardGui.AlwaysOnTop = true
-	local TextLabel = Instance.new("TextLabel", BillboardGui)
-	TextLabel.BackgroundTransparency = 1
-	TextLabel.TextScaled = true
-	TextLabel.TextColor3 = Color3.fromRGB(4, 255, 0)
-	TextLabel.Font = Enum.Font.Oswald
-	TextLabel.Text = "Door"
-	return BillboardGui
-end
 
 
 local Fools2023_Button = Section4:AddButton("Kill Greed (Disables Greed permanently.)", function()
@@ -173,13 +166,8 @@ game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, Tw
 end)
 
 
-local PlayerMain_Button = Section5:AddSlider("Walk-Speed", 1, 23, 15, {toggleable = true, default = false, flag = "CustomWS_Flag", fireontoggle = true, fireondrag = true, rounded = true}, function(val, bool)
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
-	game.Players.LocalPlayer.Character:GetAttributeChangedSignal("Crouching"):Connect(function()
-		if bool then
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
-		end
-	end)
+local PlayerMain_Button = Section5:AddSlider("Speed-Boost", 1, 10, 0, {toggleable = true, default = false, flag = "CustomWS_Flag", fireontoggle = true, fireondrag = true, rounded = true}, function(val, bool)
+	game.Players.LocalPlayer.Character:SetAttribute("SpeedBoost", val)
 end)
 
 local PlayerMain_Button1 = Section5:AddButton("Instant Proximity Prompts", function()
@@ -207,6 +195,13 @@ local PlayerMain_Button2 = Section5:AddButton("Infinite Minecart Push", function
 	else
 		InfiniteMPushActive = false
 	end
+end)
+
+local Items_Button1 = Section2:AddButton("Give Screech Plush (CLIENTSIDE)", function()
+	local Plush = game:GetObjects("rbxassetid://98550652465651")[1]
+local Player = game.Players.LocalPlayer
+local Backpack = Player.Backpack
+Plush.Parent = Backpack
 end)
 
 local Items_Button = Section2:AddButton("Give M249 (CLIENTSIDE + UNSTABLE)", function()
